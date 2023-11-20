@@ -1,0 +1,16 @@
+[package]
+name = "sqlx-test-0-7-2-issue"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Broken - commit 4d12ca4 'Implemented poll_flush for Box<S:Socket> (#2742)'
+sqlx = { git = "https://github.com/launchbadge/sqlx.git", rev="4d12ca4", features = ["mysql", "runtime-tokio-rustls"] }
+
+# Working - previous commit to 4d12ca4 'Implemented poll_flush for Box<S:Socket> (#2742)'
+# sqlx = { git = "https://github.com/launchbadge/sqlx.git", rev="4d12ca4~1", features = ["mysql", "runtime-tokio-rustls"] }
+
+[dev-dependencies]
+seq-macro = "0.3.5"
